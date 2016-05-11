@@ -1,0 +1,52 @@
+unit udmConsulta;
+
+interface
+
+uses
+  SysUtils, Classes, FMTBcd, DBClient, Provider, DB, SqlExpr;
+
+type
+  TdmConsultas = class(TDataModule)
+    dstCedentes: TSQLDataSet;
+    dspCedentes: TDataSetProvider;
+    cdsCedentes: TClientDataSet;
+    cdsCedentesCED_CODIGO: TIntegerField;
+    cdsCedentesCED_NOME: TStringField;
+    dstClientes: TSQLDataSet;
+    dspClientes: TDataSetProvider;
+    cdsClientes: TClientDataSet;
+    cdsClientesCLI_CODIGO: TIntegerField;
+    cdsClientesCLI_NOME: TStringField;
+    qryConsulta: TSQLQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure CLIENTES;
+    procedure CEDENTES;
+  end;
+
+var
+  dmConsultas: TdmConsultas;
+
+implementation
+
+uses udmBoleto;
+
+{$R *.dfm}
+
+{ TdmConsultas }
+
+procedure TdmConsultas.CEDENTES;
+begin
+     cdsCedentes.Close;
+     cdsCedentes.Open;     
+end;
+
+procedure TdmConsultas.CLIENTES;
+begin
+     cdsClientes.Close;
+     cdsClientes.Open;
+end;
+
+end.
